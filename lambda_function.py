@@ -20,7 +20,7 @@ def chat_completion(text, user_id):
     openai.organization = OPENAI_ORGANIZATION
     openai.api_key = OPENAI_API_KEY
     openai.Model.list()
-    config = ''
+    config = 'あなたはAIアシスタントです。私からの問いかけになるべく早く返答してください。\n'
     response = table.query(
         KeyConditionExpression=Key('user_id').eq(user_id)
     )
