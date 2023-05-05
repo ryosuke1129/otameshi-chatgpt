@@ -51,6 +51,8 @@ __※会話履歴は発話から1時間後に自動的に削除します（OpenA
         * （Docker、AWS CLI、AWS SAMを使って構築するため、超面倒・・・）
         * requirements.txtに沿って必要なライブラリをすべてインストールする
         * 参考：<https://nisshingeppo.com/ai/aws-lambda-library-install/>
+    * ロールにDynamoDBへのアクセス権限を追加する
+        * 追加するポリシー：AmazonDynamoDBFullAccess
     * lambda_function.pyに、作成したコードを貼り付けてデプロイする
 
 ## 作成者
