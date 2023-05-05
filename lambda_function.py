@@ -25,6 +25,10 @@ def chat_completion(text, user_id):
         KeyConditionExpression=Key('user_id').eq(user_id)
     )
     items = response['Items']
+    if len(items) > 15:
+        count = len(items) - 15
+        for i in range(count):
+            del items[0]
     for item in items:
         config += item['user_content']+'\n'
         config += item['GPT_reply']+'\n----------\n'
