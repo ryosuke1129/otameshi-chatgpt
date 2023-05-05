@@ -6,12 +6,12 @@
 * ChatGPTでおなじみの「GPT-3.5」を使用しています
 * 「会話をリセット」と送信すると、会話履歴をすべて削除することができます
 
-__※会話履歴は発話から1時間後に自動的に削除します（OpenAIの課金額がエグいので・・・）__
+__※会話履歴は毎日0時に自動的に削除します（OpenAIの課金額がエグいので・・・）__
 
 ### 「お試しChatGPT」の友だち追加はこちらから
-![S_gainfriends_2dbarcodes_GW](https://user-images.githubusercontent.com/71242610/236373265-ade7b5de-26e6-48ef-bb68-94134f11d78b.png)
+![S_gainfriends_2dbarcodes_GW](https://user-images.githubusercontent.com/71242610/236412606-64918eb6-0605-4e51-a893-6309323f7721.png)
 
-<a href="https://lin.ee/lo9Rca8"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
+<a href="https://lin.ee/n1Y5WNZ"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
 
 ## 用意するもの
 * OpenAI API
