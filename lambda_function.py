@@ -31,7 +31,7 @@ def chat_completion(text, user_id):
             del items[0]
     for item in items:
         config += item['user_content']+'\n'
-        config += item['GPT_reply']+'\n----------\n'
+        config += item['GPT_reply']+'\n-----\n'
     completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": config + text + '。'}]
