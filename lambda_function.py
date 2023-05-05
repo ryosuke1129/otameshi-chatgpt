@@ -25,8 +25,8 @@ def chat_completion(text, user_id):
         KeyConditionExpression=Key('user_id').eq(user_id)
     )
     items = response['Items']
-    if len(items) > 15:
-        count = len(items) - 15
+    if len(items) > 20:
+        count = len(items) - 20
         for i in range(count):
             del items[0]
     for item in items:
