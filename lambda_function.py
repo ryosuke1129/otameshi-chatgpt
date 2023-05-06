@@ -15,6 +15,7 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 table = boto3.resource('dynamodb').Table('otameshi-chatgpt')
+token_count = boto3.resource('dynamodb').Table('openai-token-count')
 
 def chat_completion(text, user_id):
     openai.organization = OPENAI_ORGANIZATION
@@ -36,6 +37,16 @@ def chat_completion(text, user_id):
         model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": config + text + '。'}]
         )
+    token_count.put_item(
+        Item={
+            'name': user_id,
+            'id': completion['id'],
+            'created': completion['created'],
+            'prompt_tokens': completion['usage']['prompt_tokens'],
+            'completion_tokens': completion['usage']['completion_tokens'],
+            'total_tokens': completion['usage']['total_tokens']
+        }
+    )
     return completion['choices'][0]['message']['content']
 
 def db_del(user_id):
@@ -67,12 +78,12 @@ def lambda_handler(event, context):
                 now = datetime.datetime.now(tzinfo)
                 table.put_item(
                     Item={
-                    'user_id': user_id,
-                    'send_at': str(now),
-                    'message_id': message_id,
-                    'user_content': message,
-                    'GPT_reply': reply_message,
-                    'del_time': int(datetime.datetime.timestamp(datetime.datetime(now.year, now.month, now.day, 0, 0, 0, 0, tzinfo))+86400)
+                        'user_id': user_id,
+                        'send_at': str(now),
+                        'message_id': message_id,
+                        'user_content': message,
+                        'GPT_reply': reply_message,
+                        'del_time': int(datetime.datetime.timestamp(datetime.datetime(now.year, now.month, now.day, 0, 0, 0, 0, tzinfo))+86400)
                     }
                 )
                 ok_json = {"isBase64Encoded": False,
