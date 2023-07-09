@@ -34,7 +34,7 @@ def chat_completion(text, user_id):
         config += item['user_content']+'\n'
         config += item['GPT_reply']+'\n-----\n'
     completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4",
         messages=[{"role": "user", "content": config + text + '。'}]
         )
     token_count.put_item(
